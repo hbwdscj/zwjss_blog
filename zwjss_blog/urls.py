@@ -14,10 +14,11 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
-
+from django.urls import path, include
 # TODO:URL CONFIGURE
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', include(('blog.urls', "blog"), namespace="zwjss_blog")),
+    # include模块有两个参数，arg和namespace，namespace存在时arg参数使用时要传入app_name，在本例中为"blog"
 ]
