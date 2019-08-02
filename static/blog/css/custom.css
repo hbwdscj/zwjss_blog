@@ -244,17 +244,17 @@ img {
     content: ' ·';
     color: #000;
 }
-,
+
 .post-date::after {
     content: ' ·';
     color: #000;
 }
-,
+
 .post-author::after {
     content: ' ·';
     color: #000;
 }
-,
+
 .comments-link::after {
     content: ' ·';
     color: #000;
