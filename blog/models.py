@@ -48,8 +48,9 @@ class Post(models.Model):
     title = models.CharField(max_length=50)
     body = models.TextField()
     # 文章创建时间
-    created_time = models.DateTimeField()
+    created_time = models.DateTimeField(auto_now=True)
     # 文章最后一次修改时间
+
     modified_time = models.DateTimeField()
     # 文章摘要，此处注意，教程中写CharField默认不能为空，需要设置blank=True，但是看django2.2版本的文档，CharField只有一个额外
     # 属性，即：max_length，此处存疑
@@ -61,6 +62,6 @@ class Post(models.Model):
     tags = models.ManyToManyField(Tag, blank=True, related_name="+")
     # related_name = "+"意在避免多对多表产生后向影响
     # 同category的设定
-    author = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='user')
+    author = models.ForeignKey(User, on_delete=models.CASCADE,)
 
 # Create your models here.

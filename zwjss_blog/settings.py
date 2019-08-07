@@ -122,7 +122,8 @@ USE_I18N = True
 
 USE_L10N = True
 
-USE_TZ = True
+USE_TZ = False
+# 此处置为False，关闭django默认使用America/Chicago时间，上面定义为采用Asia/Shanghai时间，解决了views.archive中month无法匹配的问题
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/

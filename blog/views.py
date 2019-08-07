@@ -18,4 +18,25 @@ def details(request, pk):
     }
     return render(request, 'blog/detail.html', context=context)
 
+# 根据年份和月份来显示归档时间目录下的文章
+def archives(request, year, month):
+    """
+    此处为解决存在month无法匹配的问题，将settings中的USE_TZ置为False解决。
+    """
+    post_list = Post.objects.filter(created_time__year=year,
+                                    created_time__month=month,
+                                    ).order_by('-created_time')
+    context = {
+        'post_list': post_list
+        # 因为此处借用了已经渲染了的index.html，index中定义了参数为post_list,因此此处必须遵守
+    }
+    return render(request, 'blog/index.html', context=context)
+
+def category(request, pk):
+    cate = get_object_or_404(Category, pk=pk)
+    post_list = Post.objects.filter(category=cate).order_by('-created_time')
+    context = {
+        'post_list': post_list
+    }
+    return render(request, 'blog/index.html', context=context)
 # Create your views here.

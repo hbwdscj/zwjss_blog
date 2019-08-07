@@ -111,11 +111,12 @@ blog_tags为自定义的模板标签，在blog/templatetags下，目的是在模
             <!-- 归档 -->
                 <div class="widget widget-archives">
                     <h3 class="widget-title">归档</h3>
-                    {% archives as date_list %}
+                    {% get_archives as date_list %}
                     <ul>
                         {% for date in date_list %}
                             <li>
-                                <a href="#" >{{ date.year }} 年 {{ date.month }} 月</a>
+                                <a href={% url 'zwjss_blog:archive' date.year date.month %} >
+                                    {{ date.year }} 年 {{ date.month }} 月</a>
                             </li>
                         {% empty %}
                         <p>
@@ -131,7 +132,8 @@ blog_tags为自定义的模板标签，在blog/templatetags下，目的是在模
                     <ul>
                         {% for category in category_list %}
                             <li>
-                                <a href="#" >{{ category.name }}<span class="post-count">(tk_pos)</span></a>
+                                <a href="{% url 'zwjss_blog:category' category.pk %}" >{{ category.name }}
+                                    <span class="post-count">({{ category.post_set.count }}篇)</span></a>
                             </li>
                         {% empty %}
                         <p>

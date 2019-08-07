@@ -15,7 +15,7 @@ def get_recent_posts(num=5):
 
 
 @register.simple_tag  # 对应侧边栏的 归档
-def archives():
+def get_archives():
     return Post.objects.dates('created_time', 'month', order='DESC')
 # dates 方法会返回一个列表，元素为每一篇文章的created_time，且是python对象，精确到月份，将序排列，实现按月归档额功能.
 
