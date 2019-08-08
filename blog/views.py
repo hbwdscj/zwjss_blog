@@ -1,7 +1,8 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
 from .models import Category, Tag, Post
-
+from comment.models import Comment
+from comment.forms import CommentForm
 
 def index(request):
     post_list = Post.objects.order_by('-created_time')
@@ -13,8 +14,13 @@ def index(request):
 
 def details(request, pk):
     post = get_object_or_404(Post, pk=pk)
+    form = CommentForm()
+    post_comment_list = post.comment_set.all()
+
     context = {
-        'post': post
+        'post': post,
+        'form': form,
+        'post_comment_list': post_comment_list
     }
     return render(request, 'blog/detail.html', context=context)
 
