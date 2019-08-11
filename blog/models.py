@@ -6,19 +6,20 @@ from django.utils import timezone
 from django.contrib.auth.models import User
 from django.urls import reverse
 
+
 class Category(models.Model):
     """
     Blog文章的分类
     """
-    class Meta:
-        # verbose_name = '分类'
-        # verbose_name_plural如果未定义，则在admin界面显示为"分类s"
-        verbose_name_plural = '分类'
-
     name = models.CharField(max_length=20)
 
     def __str__(self):
         return self.name
+
+    class Meta:
+        # verbose_name = '分类'
+        # verbose_name_plural如果未定义，则在admin界面显示为"分类s"
+        verbose_name_plural = '分类'
 
 
 class Tag(models.Model):
@@ -38,6 +39,7 @@ class Post(models.Model):
     """
     Blog文章的主体
     """
+
     class Meta:
         verbose_name_plural = "文章"
 
@@ -65,6 +67,6 @@ class Post(models.Model):
     tags = models.ManyToManyField(Tag, blank=True, related_name="+")
     # related_name = "+"意在避免多对多表产生后向影响
     # 同category的设定
-    author = models.ForeignKey(User, on_delete=models.CASCADE,)
+    author = models.ForeignKey(User, on_delete=models.CASCADE, )
 
 # Create your models here.
