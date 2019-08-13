@@ -58,10 +58,8 @@ blog_tags为自定义的模板标签，在blog/templatetags下，目的是在模
                             </li>
                             <li class="cl-effect-11"><a href="{% url 'zwjss_blog:index' %}" data-hover="Blog">Blog</a>
                             </li>
-                            <li class="cl-effect-11"><a href="../static/blog/about.html" data-hover="About">About</a>
+                            <li class="cl-effect-11"><a href="{% url 'about:about' %}" data-hover="About">About Me</a>
                             </li>
-                            <li class="cl-effect-11"><a href="../static/blog/contact.html"
-                                                        data-hover="Contact">Contact</a>
                             </li>
                         </ul>
                     </div><!-- /.navbar-collapse -->
@@ -168,7 +166,7 @@ blog_tags为自定义的模板标签，在blog/templatetags下，目的是在模
         <ul>
             <li><a href="blog/index.html">首页</a></li>
             <li><a href="../static/blog/full-width.html">博客</a></li>
-            <li><a href="../static/blog/about.html">关于</a></li>
+            <li><a href="about.html">关于</a></li>
             <li><a href="../static/blog/contact.html">联系</a></li>
         </ul>
     </nav>

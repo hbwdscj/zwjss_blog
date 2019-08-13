@@ -23,4 +23,5 @@ urlpatterns = [
     path('post/', include(('blog.urls', "blog"), namespace="zwjss_blog")),
     # include模块有两个参数，arg和namespace，namespace存在时arg参数使用时要传入app_name，在本例中为"blog"
     path('comment/', include(('comment.urls', "comment"), namespace="comment")),
+    path('about/', include(('blog.urls', "blog"), namespace="about")),
 ]

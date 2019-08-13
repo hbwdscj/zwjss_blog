@@ -11,6 +11,8 @@ def index(request):
     }
     return render(request, 'blog/index.html', context=context)
 
+def aboutme(request):
+    return render(request, 'about.html')
 
 def details(request, pk):
     post = get_object_or_404(Post, pk=pk)
