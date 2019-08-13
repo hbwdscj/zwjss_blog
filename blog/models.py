@@ -68,5 +68,19 @@ class Post(models.Model):
     # related_name = "+"意在避免多对多表产生后向影响
     # 同category的设定
     author = models.ForeignKey(User, on_delete=models.CASCADE, )
+    """
+    views用来表示阅读量，具体实现为，在views.details中定义，因为访问博客需要调用detail函数，
+    因此在details中定义views参数，每访问一次views+1，以此来实现，因为访问较少所以可以采取这种简单的方式
+    """
+    views = models.PositiveIntegerField(default=0)
+    def increase_views(self):
+        """
+        先让views+1，但是只有调用save()方法才会更新数据库，
+        save里的update——filds表示django只更新views一项
+        此方法在views.detail中被调用
+        :return:
+        """
+        self.views += 1
+        self.save(update_fields=['views'])
 
 # Create your models here.

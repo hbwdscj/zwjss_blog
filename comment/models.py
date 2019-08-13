@@ -2,6 +2,8 @@ from django.db import models
 from django.contrib.auth.models import User
 
 class Comment(models.Model):
+    class Meta:
+        verbose_name_plural = "评论"
     name = models.CharField(max_length=15)
     email = models.EmailField(max_length=25)
     url = models.URLField(blank=True)

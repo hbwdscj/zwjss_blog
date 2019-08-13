@@ -3,7 +3,8 @@
 首先导入template模块，然手实例化template.Library类，将函数装饰为register.simple_tag,这样就可以在模板中调用
 类似{% get_recent_posts %}函数了
 """
-from ..models import Post, Category
+from ..models import Post, Category, Tag
+from django.db.models.aggregates import Count
 from django import template
 
 register = template.Library()
@@ -22,5 +23,9 @@ def get_archives():
 
 @register.simple_tag  # 对应侧边栏的分类
 def get_categories():
-    return Category.objects.all()
+    return Category.objects.annotate(num_posts=Count('post')).filter(num_posts__gte=1)
 
+
+@register.simple_tag  # 对应侧边栏的标签云
+def get_tags():
+    return Tag.objects.order_by('-created_time')

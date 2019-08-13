@@ -66,6 +66,7 @@ TEMPLATES = [
             ],
             'libraries':{
                 'blog_tags': 'blog.templatetags.blog_tags',
+                'comment_tags': 'comment.templatetags.comment_tags',
             }
         },
     },

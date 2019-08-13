@@ -22,7 +22,7 @@ def get_comment(request, post_pk):
             """
             1.post_comment_list 是一篇post对应的所有评论，因为post和comment是一对多的外键关系，
             post.comment_set.all()用法为少数方对应的所有多数方
-            2.else情况为非POST方法的情况：即没有提交数据，因此重定向到重新渲染了的文章详情页。
+            2.else情况为非POST方法的情况：即没有提交数据，因此重定向到重新渲染了的文章详情页，显示已有的数据。
             """
             post_comment_list = post.comment_set.all()
             context = {
